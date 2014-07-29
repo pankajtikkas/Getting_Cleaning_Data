@@ -39,7 +39,7 @@ data_mean_standard_deviation <- cbind(data_subject_id_mean, data_std)
 join_data <- join(data_mean_standard_deviation, activity_labels, by = "Id", match = "first")
 descriptive_data <- join_data[,-1]
 
-
+##here below the input should be join_data
 # Answer 5
-average_tidy_data = ddply(data_mean_standard_deviation, c("Subject","Activity"), numcolwise(mean))
+average_tidy_data = ddply(join_data, c("Subject","Activity"), numcolwise(mean))
 write.table(average_tidy_data, file = "Average_Tidy_Data.txt")
